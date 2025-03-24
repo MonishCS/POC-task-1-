@@ -1,0 +1,34 @@
+✅ SET UP:
+
+   1.# First create a new user called "tryhack" on the system, and it must be run with superuser privileges "sudo"
+  
+          # Used command : sudo useradd tryhack
+   2.# After created the user change the password for the user by using the "chpasswd" command
+
+          # used command : echo "<username>:<password>" | sudo chpasswd
+   4.# We examine full detailed information about the /etc/shadow file, showing its permissions, ownership, size, and modification date to identify and exploit any 
+       misconfigurations
+
+          # used command : ls -l /etc/shadow
+  5.# we modify the /etc/shadow file to be world-readable, writable, and 
+      executable, which severely compromises the security 
+
+         # used command : sudo chmod 777 /etc/shadow
+      
+✅ EXPLOIT:
+   1.# We have accessed full permissions of the /etc/shadow file, which 
+      includes critical password and account information for users
+
+         # used command : cat /stc/shadow
+      
+✅ MITIGATION:
+   1.# We set permissions for the /etc/shadow file, allowing only the root 
+      user to modify it, members of the associated group to read it, and 
+      preventing any access for other users and changes the ownership of the /etc/shadow file,
+      
+         # used command : sudo chmod 640 /etc/shadow
+         # used command : sudo chown root:shadow etc/shadow
+   2.# We edit the /etc/sudoers file, which defines who can use sudo and what they can do with it
+
+        # used command : sudo visudo
+📌 DELIVERABLES:
