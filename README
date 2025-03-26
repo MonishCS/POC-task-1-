@@ -16,12 +16,14 @@
          # used command : sudo chmod 777 /etc/shadow
       
 ✅ EXPLOIT:
+
    1.# We have accessed full permissions of the /etc/shadow file, which 
       includes critical password and account information for users
 
          # used command : cat /stc/shadow
       
 ✅ MITIGATION:
+
    1.# We set permissions for the /etc/shadow file, allowing only the root 
       user to modify it, members of the associated group to read it, and 
       preventing any access for other users and changes the ownership of the /etc/shadow file,
@@ -31,4 +33,26 @@
    2.# We edit the /etc/sudoers file, which defines who can use sudo and what they can do with it
 
         # used command : sudo visudo
-📌 DELIVERABLES:
+
+📌 SUMMARY:
+
+🔹 Setup:
+
+Create multiple users (useradd alice, useradd bob).
+
+Intentionally misconfigure sensitive file permissions (chmod 777 /etc/shadow).
+
+🔹 Exploitation:
+
+A low-privileged user (alice) gains unauthorized access (cat /etc/shadow).
+
+Modify system files to escalate privileges (echo "hacker::0:0:::/bin/bash" >> /etc/passwd).
+
+🔹 Mitigation:
+
+Correct file permissions (chmod 640 /etc/shadow, chmod 644 /etc/passwd).
+
+Restore proper file ownership (chown root:root /etc/shadow).
+
+Restrict sudo access (visudo).
+
