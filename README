@@ -56,3 +56,5 @@ Restore proper file ownership (chown root:root /etc/shadow).
 
 Restrict sudo access (visudo).
 
+✅ Objective: Understand security risks caused by permission misconfigurations and apply best practices to secure Linux systems.
+
